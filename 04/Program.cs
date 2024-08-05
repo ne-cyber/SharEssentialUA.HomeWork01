@@ -23,33 +23,28 @@ namespace _04
         // що розраховує периметр багатокутника.Написати програму, яка виводить на екран назву та периметр багатокутника.
 
 
+       
 
         static void Main(string[] args)
         {
             Console.InputEncoding = Encoding.UTF8;
             Console.OutputEncoding = Encoding.UTF8;
 
+
+
             Figure triangle = new Figure(new Point(0, 0), new Point(1, 1), new Point(0, 2));
-            triangle.PerimeterCalculator();
-
+            Console.WriteLine("Периметр {0} {1}", triangle.FigureName, triangle.Perimeter);
             Console.WriteLine(new string('-', 30));
 
-            Figure quadrangle = new Figure(new Point(0, 0), new Point(2, 0), new Point(2, 2), new Point(0, 2));
-            quadrangle.PerimeterCalculator();
-
+            Figure quadrangle = new Figure(new Point(0, 0), new Point(0, 2), new Point(2, 2), new Point(2, 0));
+            Console.WriteLine("Периметр {0} {1}", quadrangle.FigureName, quadrangle.Perimeter);
             Console.WriteLine(new string('-', 30));
 
-            Figure pentagon = new Figure(new Point(0, 0), new Point(2, 0), new Point(1, 2), new Point(2, 2), new Point(0, 2));
-            pentagon.PerimeterCalculator();
-
+            Figure pentagon = new Figure(new Point(0, 0), new Point(0, 2), new Point(2, 2), new Point(2, 0), new Point(1, 0));
+            Console.WriteLine("Периметр {0} {1}", pentagon.FigureName, pentagon.Perimeter);
             Console.WriteLine(new string('-', 30));
 
-            Point p1 = new Point(10, 10, "перша точка");
-            Point p2 = new Point(20, 20, "друга точка");
-            Point p3 = new Point(30, 10, "третя точка");
-            Figure someFigure = new Figure(p1, p2, p3);
-            someFigure.PerimeterCalculator();
-
+            
             Console.ReadKey();
         }
     }

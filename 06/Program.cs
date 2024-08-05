@@ -67,15 +67,15 @@ namespace _06
             public void Show()
             {
                 if(Index != null)
-                    Console.Write($"{Index} ");
+                    Console.Write($"індекс: {Index}, ");
                 if (Country != null)
-                    Console.Write($"{Country} ");
+                    Console.Write($"країна: {Country}, ");
                 if (City != null)
-                    Console.Write($"{City} ");
+                    Console.Write($"м.{City}, ");
                 if (Street != null)
-                    Console.Write($"{Street}, ");
+                    Console.Write($"вул.{Street}, ");
                 if (House != null)
-                    Console.Write($"дім {House} ");
+                    Console.Write($"д.{House} ");
                 if (Apartment != null)
                     Console.Write($"кв.{Apartment}");
 
@@ -86,7 +86,6 @@ namespace _06
         }
 
 
-
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
@@ -94,23 +93,20 @@ namespace _06
             Address address1 = new Address();
             address1.Index = "123456";
             address1.Country = "Україна";
-            address1.City = "м.Одеса";
-            address1.Street = "вул.Дерібасівська";
+            address1.City = "Одеса";
+            address1.Street = "Дерібасівська";
             address1.House = "1a";
             address1.Apartment = "12";
-
             address1.Show();
-
             Console.WriteLine(new string('-', 60));
 
             Address address2 = new Address();
             //address2.Index = "123456";
             //address2.Country = "Україна";
-            address2.City = "м.Одеса";
-            address2.Street = "вул.Дерібасівська";
+            address2.City = "Одеса";
+            address2.Street = "Дерібасівська";
             address2.House = "1a";
             //address2.Apartment = "12";
-
             address2.Show();
 
             Console.WriteLine(new string('-', 60));

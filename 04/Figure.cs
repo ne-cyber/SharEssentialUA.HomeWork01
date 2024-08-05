@@ -19,12 +19,16 @@ namespace _04
             }
 
             public Figure(Point p1, Point p2, Point p3, Point p4)
-                : this(p1, p2, p3, p4, null) 
-            { }
+                : this(p1, p2, p3, p4, null)
+            {
+                Array.Resize(ref points, 4);
+            }
 
             public Figure(Point p1, Point p2, Point p3)
-                : this(p1, p2, p3, null, null) 
-            { }
+                : this(p1, p2, p3, null, null)
+            {
+                Array.Resize(ref points, 3);
+            }
 
 
 
@@ -33,40 +37,41 @@ namespace _04
                 return Math.Sqrt(Math.Pow(B.X - A.X, 2) + Math.Pow(B.Y - A.Y, 2));
             }
 
-            public void PerimeterCalculator()
+            public double PerimeterCalculator()
             {
                 double perimeter = 0;
 
-                //Потім pointsCount == 3 це трикутник, pointsCount == 4 це чотирикутник, pointsCount == 5 це п'ятикутник
-                int pointsCount = 0;  
-
-                // Обходимо кожну пару (0,1), (1,2), ..., (i-1, i)
-                for (int i = 1; (i < points.Length && points[i] != null); i++)
+                for (int i = 0; i < points.Length - 1; i++)
                 {
-                    pointsCount = i;
-
-                    perimeter += LengthSide(points[i - 1], points[i]);
+                    perimeter += LengthSide(points[i], points[i + 1]);
                 }
 
-                // додаємо останню пару (i, 0)
-                perimeter += LengthSide(points[pointsCount], points[0]);
+                perimeter += LengthSide(points[points.Length - 1], points[0]);
 
+                return perimeter;
 
-                
-                pointsCount++;
-                string nazva;
-                if (pointsCount == 3)
-                    nazva = "трикутник";
-                else if (pointsCount == 4)
-                    nazva = "чотирикутник";
-                else if (pointsCount == 5)
-                    nazva = "п'ятикутник";
-                else
-                    throw new Exception("Щось пішло не так. Невідповідна кількість точок. Повино бути 3, 4 чи 5.");
-
-
-                Console.WriteLine($"Фігура {nazva} має периметр {perimeter} (од.)");
             }
+
+            public string FigureName
+            {
+                get
+                {
+                    if (points.Length == 3)
+                        return "трикутник";
+                    else if (points.Length == 4)
+                        return "чотирикутник";
+                    else if (points.Length == 5)
+                        return "п'ятикутник";
+                    else
+                        return "не трикутник, не чотирикутник, не п'ятикутник";
+                }
+            }
+
+            public double Perimeter
+            {
+                get { return PerimeterCalculator(); }
+            }
+
 
         }
     }
